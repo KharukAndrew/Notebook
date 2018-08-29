@@ -5,7 +5,7 @@ namespace Notebook.Domain.Models
     public class NotebookDb : DbContext
     {
         public NotebookDb()
-            : base("name=NotebookDb")
+            : base("name=NotebookDb")        
         {
         }
         public virtual DbSet<Topic> Topics { get; set; }

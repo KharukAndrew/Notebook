@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Ninject;
+using Ninject.Modules;
+using Ninject.Web.Mvc;
+using Notebook.Web.Util;
 using System.Web.Mvc;
 using System.Web.Routing;
 
@@ -13,6 +13,11 @@ namespace Notebook.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            // внедрение зависимостей
+            NinjectModule module = new DIModule();
+            var kernel = new StandardKernel(module);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }
