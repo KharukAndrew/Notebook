@@ -16,3 +16,12 @@ textarea {
     max-width: 280px;
 }
 
+.topic {
+    float:left;
+    background-color:aqua;
+}
+
+.noteTable {
+    float: left;
+}
+

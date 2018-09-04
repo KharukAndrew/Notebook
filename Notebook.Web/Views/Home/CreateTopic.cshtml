@@ -1,0 +1,16 @@
+﻿@model Notebook.Web.Models.TopicViewModel
+
+@{
+    ViewBag.Title = "CreateTopic";
+}
+
+<h2>Create New Topic</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+    <br />
+    <input type="submit" value="Create" />
+}
+

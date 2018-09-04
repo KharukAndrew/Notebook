@@ -1,6 +1,7 @@
 ﻿using Ninject;
 using Ninject.Modules;
 using Ninject.Web.Mvc;
+using Notebook.Web.App_Start;
 using Notebook.Web.Util;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -13,6 +14,8 @@ namespace Notebook.Web
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            MapperConfig.ConfigureMapping();
 
             // внедрение зависимостей
             NinjectModule module = new DIModule();

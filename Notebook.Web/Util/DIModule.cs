@@ -13,6 +13,7 @@ namespace Notebook.Web.Util
         public override void Load()
         {
             Bind<IRepository<Note>>().To<NoteRepository>();
+            Bind<IRepository<Topic>>().To<TopicRepository>();
         }
     }
 }
