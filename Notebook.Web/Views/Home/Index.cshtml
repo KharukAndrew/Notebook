@@ -20,7 +20,7 @@
 
     <div class="noteTable">
         <p>
-            @Html.ActionLink("Create New", "Create")
+            @Html.ActionLink("Create New", "CreateNote")
         </p>
         <table class="table">
             <tr>
@@ -48,7 +48,7 @@
                         @Html.DisplayFor(modelItem => item.TopicId)
                     </td>
                     <td>
-                        @Html.ActionLink("Details", "Details", new { id = item.Id })
+                        @Html.ActionLink("Details", "DetailsNote", new { id = item.Id })
                     </td>
                 </tr>
             }

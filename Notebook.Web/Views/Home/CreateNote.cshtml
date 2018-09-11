@@ -1,0 +1,25 @@
+﻿@model Notebook.Web.Models.NoteWithTextViewModel
+
+@{
+    ViewBag.Title = "CreateNote";
+}
+
+<h2>Create new Note</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Date)
+    @Html.EditorFor(m => m.Date)<br />
+
+    @Html.LabelFor(m => m.Header)
+    @Html.EditorFor(m => m.Header)<br />
+
+    @Html.LabelFor(m => m.Text)
+    @Html.EditorFor(m => m.Text)<br />
+
+    @Html.LabelFor(m => m.TopicId)
+    @Html.EditorFor(m => m.TopicId)<br />
+
+    <input type="submit" value="Create" />
+}
+

@@ -1,6 +1,8 @@
 ﻿using Notebook.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 
 namespace Notebook.Domain.Repositories
 {
@@ -23,8 +25,40 @@ namespace Notebook.Domain.Repositories
 
         public void Add(Note item)
         {
-            throw new NotImplementedException();
+            //Транзакция записи новой заметки в таблицы Note и Text
+            using(var transaction = db.Database.BeginTransaction())
+            {
+                try
+                {
+                    db.Notes.Add(item);
+                    db.SaveChanges();
+
+                    int newId = item.Id;
+
+                    Text text = new Text
+                    {
+                        Id = newId,
+                        Entry = item.Text.Entry,
+                        Note = item
+                    };
+
+                    db.Texts.Add(text);
+                    db.SaveChanges();
+
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                }
+            }
         }
+
+        public Note Details(int id)
+        {
+            return db.Notes.Include(n => n.Text).Include(n => n.Topic).FirstOrDefault(o => o.Id == id);
+        }
+
 
         private bool disposed = false;
 

@@ -34,6 +34,11 @@ namespace Notebook.Domain.Repositories
             }
         }
 
+        public Topic Details(int id)
+        {
+            throw new NotImplementedException();
+        }
+
 
         //private bool disposed = false;
 

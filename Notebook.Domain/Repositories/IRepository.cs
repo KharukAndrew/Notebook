@@ -7,5 +7,6 @@ namespace Notebook.Domain.Repositories
         IEnumerable<T> GetAll();
         T GetForId(int id);
         void Add(T item);
+        T Details(int id);
     }
 }

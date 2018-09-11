@@ -15,6 +15,7 @@ namespace Notebook.Web.Controllers
     {
         IRepository<Topic> _repositoryTopic;
         IRepository<Note> _repositoryNote;
+        IRepository<Text> _repositoryText;
 
         public HomeController(IRepository<Note> repoNote, IRepository<Topic> repoTopic)
         {
@@ -40,6 +41,7 @@ namespace Notebook.Web.Controllers
             return View(note);
         }
 
+        [HttpPost]
         public ActionResult CreateNote(NoteWithTextViewModel noteWithText)
         {
             //TODO: переделать с использованием AutoMapper
@@ -47,23 +49,31 @@ namespace Notebook.Web.Controllers
             {
                 Date = noteWithText.Date,
                 Header = noteWithText.Header,
-                TopicId = noteWithText.TopicId
-            };
-            Text text = new Text
-            {
-                Entry = noteWithText.Text
+                TopicId = noteWithText.TopicId,
+                Text = new Text { Entry = noteWithText.Text }
             };
 
             _repositoryNote.Add(note);
-            //TODO: добавление текста. Для удобства реализовать Unit of Work
-
+            
             return RedirectToAction("Index"); 
         }
 
 
-        public ActionResult DetailsNote()
+        public ActionResult DetailsNote(int id)
         {
-            return View();
+            Note note = _repositoryNote.Details(id);
+
+            //TODO: сопоставление надо через Automapper
+            NoteWithTextViewModel noteViewModel = new NoteWithTextViewModel
+            {
+                Id = note.Id,
+                Date = note.Date,
+                Header = note.Header,
+                TopicId = note.TopicId,
+                Text = note.Text.Entry
+            };
+
+            return View(noteViewModel);
         }
 
         //Action for Topic

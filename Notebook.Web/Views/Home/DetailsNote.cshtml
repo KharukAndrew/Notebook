@@ -1,0 +1,60 @@
+﻿@model Notebook.Web.Models.NoteWithTextViewModel
+
+@{
+    ViewBag.Title = "DetailsNote";
+}
+
+<div class="modal-content">
+    <div class="modal-header">
+        <button class="close" data-dismiss="modal" area-hidden="true">X</button>
+        <h3>@Html.DisplayFor(model => model.Header)</h3>
+    </div>
+    <div class="modal-body">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TopicId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TopicId)
+            </dd>
+
+            @*<dt>
+            @Html.DisplayNameFor(model => model.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>*@
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Text)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Text)
+            </dd>
+        </dl>
+    </div>
+    <div class="modal-footer">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <a href="@Url.Action("Edit")" class="btn btn-primary">
+                    <i class="glyphicon glyphicon-arrow-left"></i> Back to Edit
+                </a>
+                <a href="@Url.Action("Index")" class="btn btn-default">
+                    <i class="glyphicon glyphicon-arrow-left"></i> Back to list
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
