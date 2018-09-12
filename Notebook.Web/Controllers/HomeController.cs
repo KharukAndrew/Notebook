@@ -25,6 +25,7 @@ namespace Notebook.Web.Controllers
 
         public ActionResult Index()
         {
+            //TODO: здесь и ниже с ViewBag передавать коллекцию типов TopicViewBag
             ViewBag.Topic = _repositoryTopic.GetAll();
 
             IEnumerable<Note> notes = _repositoryNote.GetAll();
@@ -33,6 +34,8 @@ namespace Notebook.Web.Controllers
 
         public ActionResult CreateNote()
         {
+            ViewBag.TopicId = new SelectList(_repositoryTopic.GetAll(), "Id", "Name");
+
             NoteWithTextViewModel note = new NoteWithTextViewModel
             {
                 Date = DateTime.Now
