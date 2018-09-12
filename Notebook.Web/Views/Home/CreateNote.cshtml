@@ -1,4 +1,6 @@
-﻿@model Notebook.Web.Models.NoteWithTextViewModel
+﻿@using Notebook.Domain.Models
+
+@model Notebook.Web.Models.NoteWithTextViewModel
 
 @{
     ViewBag.Title = "CreateNote";
@@ -16,6 +18,10 @@
 
     @Html.LabelFor(m => m.Text)
     @Html.EditorFor(m => m.Text)<br />
+
+    @Html.LabelFor(m => m.Importance)
+    @*@Html.DropDownList("Importance")<br />*@
+    @Html.DropDownList("Importance", EnumHelper.GetSelectList(typeof(Importance)))<br />
 
     @Html.LabelFor(m => m.TopicId)
     @Html.DropDownList("TopicId")<br />

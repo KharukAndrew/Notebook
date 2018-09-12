@@ -33,24 +33,30 @@
                 <th>
                     @Html.DisplayNameFor(model => model.TopicId)
                 </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Importance)
+                </th>
             </tr>
 
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Header)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TopicId)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Details", "DetailsNote", new { id = item.Id })
-                    </td>
-                </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Header)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TopicId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Importance)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "DetailsNote", new { id = item.Id })
+                </td>
+            </tr>
             }
 
         </table>

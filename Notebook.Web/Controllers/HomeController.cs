@@ -36,6 +36,11 @@ namespace Notebook.Web.Controllers
         {
             ViewBag.TopicId = new SelectList(_repositoryTopic.GetAll(), "Id", "Name");
 
+            //Альтернативный вариант для выпадающего списка с Importance
+            //var values = from Importance e in Enum.GetValues(typeof(Importance))
+            //             select new { Id = (int)e, Name = e.ToString() };
+            //ViewBag.Importance = new SelectList(values.ToList(), "Id", "Name");
+
             NoteWithTextViewModel note = new NoteWithTextViewModel
             {
                 Date = DateTime.Now
@@ -53,6 +58,7 @@ namespace Notebook.Web.Controllers
                 Date = noteWithText.Date,
                 Header = noteWithText.Header,
                 TopicId = noteWithText.TopicId,
+                Importance = noteWithText.Importance,
                 Text = new Text { Entry = noteWithText.Text }
             };
 
@@ -73,6 +79,7 @@ namespace Notebook.Web.Controllers
                 Date = note.Date,
                 Header = note.Header,
                 TopicId = note.TopicId,
+                Importance = note.Importance,
                 Text = note.Text.Entry
             };
 

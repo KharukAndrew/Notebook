@@ -7,6 +7,7 @@ namespace Notebook.Domain.Models
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public string Header { get; set; }
+        public Importance Importance { get; set; }
 
         public int TopicId { get; set; }
         public Topic Topic { get; set; }

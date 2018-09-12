@@ -19,7 +19,8 @@ namespace Notebook.Domain.Models
             Note note1 = new Note {
                 Date = new DateTime(2018, 09, 10),
                 Header = "Tests header",
-                Topic = topik1              
+                Topic = topik1,
+                Importance = Importance.High
             };
             context.Notes.Add(note1);
 
