@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\InitializerDb.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\NotebookDb.cs" />
     <Compile Include="Models\Text.cs" />
